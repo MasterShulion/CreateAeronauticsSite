@@ -1,0 +1,10 @@
+{
+  "modpackUrl": "https://drive.google.com/file/d/1DV-SJK_ENTA-slic7Cv7Cpj4iZ5V6WS4/view?usp=sharing",
+  "serverIp": "createaeronautics.game-server.host",
+  "discordUrl": "https://discord.gg/58gVjMB6Cb",
+  "analyticsId": "",
+  "sentryDsn": "",
+  "testMode": true,
+  "defaultLanguage": "ru",
+  "version": "1.0.2"
+}

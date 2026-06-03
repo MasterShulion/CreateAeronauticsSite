@@ -1,0 +1,16 @@
+{
+  "name": "create-aeronautics-site",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i ./assets/input.css -o ./assets/site.css --minify",
+    "build:js": "esbuild ./assets/lucide-lite.js --bundle --minify --outfile=./assets/lucide-lite.js",
+    "convert:images": "mkdir -p ./assets/images/converted && npx sharp-cli ./assets/images/* --output ./assets/images/converted --webp --avif --quiet || true",
+    "build": "npm run convert:images && npm run build:css && npm run build:js"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17",
+    "esbuild": "^0.19.0",
+    "sharp-cli": "^1.15.0"
+  }
+}

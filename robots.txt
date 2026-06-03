@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Crawl-delay: 0.5
+Sitemap: https://shizukuzk.github.io/sitemap.xml
+
+# Яндекс
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 0.1
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.1

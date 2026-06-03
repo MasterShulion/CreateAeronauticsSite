@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title id="pageTitle">404 — Page Not Found</title>
+  <meta name="description" id="pageDesc" content="The page you're looking for doesn't exist.">
+  <link rel="canonical" href="https://shizukuzk.github.io/404.html" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#08110d">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="icon" href="/og-image.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/og-image.svg">
+  <meta name="msapplication-TileImage" content="/og-image.svg">
+</head>
+<body class="bg-gradient-to-b from-slate-950 to-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
+  <div class="text-center px-6">
+    <div class="mb-8">
+      <i data-lucide="alert-octagon" class="h-24 w-24 mx-auto text-brass"></i>
+    </div>
+    <h1 id="title" class="text-6xl font-bold mb-4">404</h1>
+    <p id="subtitle" class="text-2xl text-slate-300 mb-8">Page Not Found</p>
+    <p id="description" class="text-slate-400 mb-8 max-w-md mx-auto">The page you're looking for doesn't exist. It might have been moved or deleted.</p>
+    <a href="/" id="homeLink" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-lime-400 px-6 py-3.5 font-semibold text-slate-950 transition hover:scale-105">
+      <i data-lucide="home" class="h-5 w-5"></i>
+      <span id="homeText">Back to Home</span>
+    </a>
+  </div>
+
+  <script src="/assets/lucide-lite.js"></script>
+  <script>
+    const lang = localStorage.getItem('create-aeronautics-language') || (navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en');
+    
+    if (lang === 'ru') {
+      document.documentElement.lang = 'ru';
+      document.getElementById('pageTitle').textContent = '404 — Страница не найдена';
+      document.getElementById('pageDesc').setAttribute('content', 'Страница которую вы ищите не существует.');
+      document.getElementById('title').textContent = '404';
+      document.getElementById('subtitle').textContent = 'Страница не найдена';
+      document.getElementById('description').textContent = 'Страница которую вы ищите не существует. Возможно, она была перемещена или удалена.';
+      document.getElementById('homeText').textContent = 'На главную';
+    }
+
+    // Initialize Lucide icons safely
+    function initLucide404() {
+      if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+        try {
+          lucide.createIcons();
+        } catch (e) {
+          console.warn('Lucide 404 init:', e);
+        }
+      } else {
+        // Fallback for strict CSP/file:// where CDN scripts can be blocked
+        document.querySelectorAll('[data-lucide]').forEach((icon) => {
+          const name = icon.getAttribute('data-lucide');
+          icon.textContent = name === 'home' ? '⌂' : '⚠';
+          icon.style.fontStyle = 'normal';
+          icon.style.display = 'inline-flex';
+          icon.style.alignItems = 'center';
+          icon.style.justifyContent = 'center';
+        });
+      }
+    }
+    initLucide404();
+  </script>
+</body>
+</html>

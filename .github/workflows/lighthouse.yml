@@ -1,0 +1,19 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: 'https://shizukuzk.github.io/'
+          uploadArtifacts: 'true'
+          uploadHtmlReport: 'true'
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}

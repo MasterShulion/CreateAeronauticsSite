@@ -1,0 +1,29 @@
+name: Image Optimize
+
+on:
+  push:
+    paths:
+      - 'assets/images/**'
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        run: npm ci
+      - name: Convert images to WebP/AVIF
+        run: |
+          npx sharp-cli ./assets/images/* --output ./assets/images/converted --webp --avif --quiet || true
+      - name: Commit optimized images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/converted || true
+          if git diff --cached --quiet; then echo "No image changes"; else git commit -m "chore(images): optimized images" || true; git push origin HEAD:main || true; fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

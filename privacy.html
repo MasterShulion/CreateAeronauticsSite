@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title id="pageTitle">Privacy & Cookies — Create Aeronautics</title>
+  <meta name="description" id="pageDesc" content="Privacy policy, cookie usage and analytics choices for Create Aeronautics.">
+  <link rel="canonical" href="https://shizukuzk.github.io/privacy.html" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#08110d">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="bg-gradient-to-b from-slate-950 to-slate-900 text-slate-100 min-h-screen">
+  <header class="border-b border-white/10 bg-slate-950/75 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-lg font-bold text-white hover:text-brass transition">← Home</a>
+      <button id="langSwitch" class="px-3 py-1 rounded bg-white/5 border border-white/10 hover:border-brass/50 text-sm transition"><span id="langSwitchText">RU</span></button>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 py-12">
+    <section id="content_en" style="display:none">
+      <h1 class="text-4xl font-bold mb-8">Privacy & Cookie Policy</h1>
+
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Analytics</h2>
+          <p class="mt-4 text-slate-300">We use a lightweight analytics provider (Plausible) only after you accept cookies. No personal data is collected by default. If you accept analytics, a small script will run to collect aggregated metrics like pageviews and referrers.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Third-party links</h2>
+          <p class="mt-4 text-slate-300">The site links to Discord and Google Drive; those services have their own privacy policies.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Managing cookies</h2>
+          <p class="mt-4 text-slate-300">You can withdraw consent at any time via the cookie banner; this will disable analytics loading.</p>
+        </section>
+      </div>
+    </section>
+
+    <section id="content_ru" style="display:none">
+      <h1 class="text-4xl font-bold mb-8">Политика конфиденциальности и Cookies</h1>
+
+      <div class="space-y-8">
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Аналитика</h2>
+          <p class="mt-4 text-slate-300">Мы используем лёгкий сервис аналитики (Plausible) только после того, как ты примешь cookies. Личные данные не собираются по умолчанию. Если ты согласишься, будет запущен небольшой скрипт для сбора данных о просмотрах страниц и источниках трафика.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Ссылки на третьи стороны</h2>
+          <p class="mt-4 text-slate-300">Сайт содержит ссылки на Discord и Google Drive; эти сервисы имеют свои политики конфиденциальности.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold border-b border-brass pb-3">Управление cookies</h2>
+          <p class="mt-4 text-slate-300">Ты можешь отозвать согласие в любой момент через баннер cookies; это отключит загрузку аналитики.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const stored = localStorage.getItem('create-aeronautics-language');
+    let lang = stored || (navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en');
+
+    function showLang(l){
+      document.getElementById('content_en').style.display = l === 'en' ? 'block' : 'none';
+      document.getElementById('content_ru').style.display = l === 'ru' ? 'block' : 'none';
+      document.getElementById('pageTitle').textContent = l === 'ru' ? 'Политика конфиденциальности — Create Aeronautics' : 'Privacy & Cookies — Create Aeronautics';
+      document.getElementById('pageDesc').setAttribute('content', l === 'ru' ? 'Политика конфиденциальности, использование cookies и настройки аналитики для Create Aeronautics.' : 'Privacy policy, cookie usage and analytics choices for Create Aeronautics.');
+      document.getElementById('langSwitchText').textContent = l === 'ru' ? 'EN' : 'RU';
+    }
+
+    showLang(lang);
+
+    document.getElementById('langSwitch').addEventListener('click', ()=>{
+      const newLang = lang === 'ru' ? 'en' : 'ru';
+      lang = newLang;
+      localStorage.setItem('create-aeronautics-language', newLang);
+      showLang(newLang);
+    });
+  </script>
+</body>
+</html>
